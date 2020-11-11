@@ -6,7 +6,14 @@
   <title>To Do List</title>
 </head>
 <body>
-  <h1>It's a <%= kindOfDay %>!</h1>
+
+  <% if (kindOfDay === "Saturday" || kindOfDay === "Sunday"){ %>
+    <h1 style="color: Blue"><%= kindOfDay %> To Do List</h1>
+  <% } else { %>
+    <h1 style="color:aquamarine"><%= kindOfDay %> To Do List</h1>
+  <% } %>
+
+  
   
 </body>
 </html>
