@@ -3,7 +3,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const e = require("express");
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -64,6 +63,17 @@ app.post("/", function(req, res){
     });
   item.save()
   res.redirect("/");
+});
+
+app.post("/delete", function(req, res){
+  const checkedItemId = req.body.checkbox;
+
+  Item.findByIdAndRemove(checkedItemId, function(err){
+    if(!err) {
+      console.log("successfully deleted data from ID");
+      res.redirect("/");
+    }
+  });
 });
 
 app.get("/work", function(req,res){
